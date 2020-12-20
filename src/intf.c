@@ -111,6 +111,8 @@ intf_iff_to_flags(int iff)
 		n |= INTF_FLAG_BROADCAST;
 	if (iff & IFF_MULTICAST)
 		n |= INTF_FLAG_MULTICAST;
+	if (iff & IFF_RUNNING)
+		n |= INTF_FLAG_RUNNING;
 
 	return (n);
 }
