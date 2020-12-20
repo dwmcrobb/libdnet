@@ -50,6 +50,7 @@ struct intf_entry {
 #define INTF_FLAG_NOARP		0x08	/* disable ARP */
 #define INTF_FLAG_BROADCAST	0x10	/* supports broadcast (r/o) */
 #define INTF_FLAG_MULTICAST	0x20	/* supports multicast (r/o) */
+#define INTF_FLAG_RUNNING	0x40	/* is running (r/o) */
 
 typedef struct intf_handle intf_t;
 
