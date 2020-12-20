@@ -113,10 +113,12 @@ _ifrow_to_entry(intf_t *intf, MIB_IFROW *ifrow, struct intf_entry *entry)
 	
 	/* Get interface flags. */
 	entry->intf_flags = 0;
-	if (ifrow->dwAdminStatus == MIB_IF_ADMIN_STATUS_UP &&
-	    (ifrow->dwOperStatus == MIB_IF_OPER_STATUS_OPERATIONAL ||
-	     ifrow->dwOperStatus == MIB_IF_OPER_STATUS_CONNECTED))
+	if (ifrow->dwAdminStatus == MIB_IF_ADMIN_STATUS_UP) {
 		entry->intf_flags |= INTF_FLAG_UP;
+	}
+	if ((ifrow->dwOperStatus == MIB_IF_OPER_STATUS_OPERATIONAL
+	     || ifrow->dwOperStatus == MIB_IF_OPER_STATUS_CONNECTED))
+		entry->intf_flags |= INTF_FLAG_RUNNING;
 	if (ifrow->dwType == MIB_IF_TYPE_LOOPBACK)
 		entry->intf_flags |= INTF_FLAG_LOOPBACK;
 	else
